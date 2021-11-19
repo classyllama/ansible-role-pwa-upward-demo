@@ -1,0 +1,43 @@
+---
+
+- name: Create PWA Demo script directory
+  file:
+    path: "{{ pwa_demo_upward_scripts_dir }}"
+    state: directory
+    owner: "{{ pwa_demo_upward_user }}"
+    group: "{{ pwa_demo_upward_group }}"
+    mode: 0750
+
+- name: Copy PWA Demo install/uninstall scripts
+  copy:
+    src: "{{ item }}"
+    dest: "{{ pwa_demo_upward_scripts_dir }}/{{ item }}"
+    owner: "{{ pwa_demo_upward_user }}"
+    group: "{{ pwa_demo_upward_group }}"
+    mode: 0750
+  with_items:
+    - install-pwa.sh
+    - uninstall-pwa.sh
+
+- name: Copy PWA Demo default config
+  copy:
+    src: "{{ item }}"
+    dest: "{{ pwa_demo_upward_scripts_dir }}/{{ item }}"
+    owner: "{{ pwa_demo_upward_user }}"
+    group: "{{ pwa_demo_upward_group }}"
+    mode: 0640
+  with_items:
+    - config_default.json
+
+- name: Create PWA Demo site config file
+  template:
+    src: config_site.json.j2
+    dest: "{{ pwa_demo_upward_scripts_dir }}/config_{{ pwa_demo_upward_config_name }}.json"
+    owner: "{{ pwa_demo_upward_user }}"
+    group: "{{ pwa_demo_upward_group }}"
+    mode: 0640
+
+- name: Install yarn package globally
+  community.general.npm:
+    name: yarn
+    global: yes

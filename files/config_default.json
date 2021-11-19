@@ -1,0 +1,9 @@
+{
+  "CONFIG_NAME": "site",
+  "SITE_HOSTNAME": "example.lan",
+  "MAGENTO_ROOT_DIR": "/var/www/data/magento",
+  "ENV_ROOT_DIR": "/var/www/data",
+  "PWA_STUDIO_VERSION": "12.1.0",
+  "PWA_STUDIO_COMPAT_MATRIX_URL": "https://raw.githubusercontent.com/magento/pwa-studio/develop/magento-compatibility.js",
+  "PWA_STUDIO_DOWNLOAD_URL": "https://github.com/magento/pwa-studio/archive/refs/tags/"
+}
