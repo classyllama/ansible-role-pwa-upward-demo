@@ -43,6 +43,7 @@ declare MAGENTO_ROOT_DIR=$(cat ${CONFIG_DEFAULT} ${CONFIG_OVERRIDE} | jq -s add 
 declare ENV_ROOT_DIR=$(cat ${CONFIG_DEFAULT} ${CONFIG_OVERRIDE} | jq -s add | jq -r '.ENV_ROOT_DIR')
 declare PWA_STUDIO_VERSION=$(cat ${CONFIG_DEFAULT} ${CONFIG_OVERRIDE} | jq -s add | jq -r '.PWA_STUDIO_VERSION')
 declare PWA_STUDIO_COMPAT_MATRIX_URL=$(cat ${CONFIG_DEFAULT} ${CONFIG_OVERRIDE} | jq -s add | jq -r '.PWA_STUDIO_COMPAT_MATRIX_URL')
+declare PWA_STUDIO_DOWNLOAD_URL=$(cat ${CONFIG_DEFAULT} ${CONFIG_OVERRIDE} | jq -s add | jq -r '.PWA_STUDIO_DOWNLOAD_URL')
 
 # Checking Magento and PWA Studio version compability
 echo "----: Checking Magento and PWA Studio versions compability"
