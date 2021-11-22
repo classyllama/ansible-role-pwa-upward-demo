@@ -41,3 +41,11 @@
   community.general.npm:
     name: yarn
     global: yes
+
+- name: Run PWA Demo installation
+  become: yes
+  become_user: "{{ pwa_demo_upward_user }}"
+  command: "{{ pwa_demo_upward_scripts_dir }}/install-pwa.sh {{ pwa_demo_upward_scripts_dir }}/config_{{ pwa_demo_upward_config_name }}.json"
+  register: out
+
+- debug: var=out.stdout_lines
