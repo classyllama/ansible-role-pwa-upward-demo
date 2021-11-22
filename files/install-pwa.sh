@@ -98,6 +98,8 @@ fi
   mv pwa ${MAGENTO_ROOT_DIR}/ && cd ${MAGENTO_ROOT_DIR}
 
   echo "----: Checking Magento license"
+
+  declare MAGENTO_COMPOSER_PROJECT=$(grep 'magento/product-' composer.json |awk -F "\"" {' print $2 '} |awk -F "-" {' print $2 '})
   if [[ ${MAGENTO_COMPOSER_PROJECT} =~ "enterprise" ]]; then
     sed -i 's/MAGENTO_BACKEND_EDITION=CE/MAGENTO_BACKEND_EDITION=EE/' pwa/.env
   fi
